@@ -1,0 +1,19 @@
+{
+    "cuentas": [
+        {
+        "login":597619,
+        "password": "pG9#%nVg*k6",
+        "server": "BlueWhaleMarkets-Server"
+        },
+        {
+        "login":10538,
+        "password": "v5U%vuU(8",
+        "server": "WSFunded-Server"
+        },
+        {
+        "login":5034939541,
+        "password": "1rYbN-Qf",
+        "server": "MetaQuotes-Demo"
+        }
+    ]
+}

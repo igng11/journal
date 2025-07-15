@@ -1,0 +1,90 @@
+<div class="risk-management-container">
+    <h2>Gestión de Riesgo - Calculadora de Lotajes EURUSD</h2>
+    <div class="calculator-card">
+        <div class="input-group">
+            <!-- <label>Tamaño de la Cuenta (USD):</label> -->
+            <div class="account-size-selection">
+                <div class="account-size-item" data-account="5000">5,000 USD</div>
+                <div class="account-size-item" data-account="10000">10,000 USD</div>
+                <div class="account-size-item" data-account="25000">25,000 USD</div>
+                <div class="account-size-item" data-account="50000">50,000 USD</div>
+                </div>
+        </div>
+
+        <div class="input-group">
+            <label for="stop-loss-pips">Stop Loss (Pips):</label>
+            <select id="stop-loss-pips">
+                <option value="1.0">1.0</option>
+                <option value="1.5">1.5</option>
+                <option value="2.0">2.0</option>
+                <option value="2.5">2.5</option>
+                <option value="3.0">3.0</option>
+                <option value="3.5">3.5</option>
+                <option value="4.0">4.0</option>
+                <option value="4.5">4.5</option>
+                <option value="5.0">5.0</option>
+                <option value="5.5">5.5</option>
+                <option value="6.0" selected>6.0</option> <option value="6.5">6.5</option>
+                <option value="7.0">7.0</option>
+                <option value="7.5">7.5</option>
+                <option value="8.0">8.0</option>
+                <option value="8.5">8.5</option>
+                <option value="9.0">9.0</option>
+                <option value="9.5">9.5</option>
+                <option value="10.0">10.0</option>
+                <option value="10.5">10.5</option>
+                <option value="11.0">11.0</option>
+                <option value="11.5">11.5</option>
+                <option value="12.0">12.0</option>
+                <option value="12.5">12.5</option>
+                <option value="13.0">13.0</option>
+                <option value="13.5">13.5</option>
+                <option value="14.0">14.0</option>
+                <option value="14.5">14.5</option>
+                <option value="15.0">15.0</option>
+            </select>
+        </div>
+
+        <div class="risk-table-container">
+            <label>Lotaje por Porcentaje de Riesgo:</label>
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>% de Riesgo por Trade</th>
+                        <th>Lotaje (EURUSD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-risk="0.0045">
+                        <td>0.45%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0059">
+                        <td>0.59%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0076">
+                        <td>0.76%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0099">
+                        <td>0.99%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0129">
+                        <td>1.29%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0167">
+                        <td>1.67%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                    <tr data-risk="0.0217">
+                        <td>2.17%</td>
+                        <td class="lot-size-output"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

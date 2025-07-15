@@ -1,0 +1,221 @@
+<section class="portfolio-section">
+
+    <div class="dashboard-metrics-container">
+        <div class="left-column-metrics">
+            <div class="top-row-metrics">
+                <div class="trades-per-day-card chart-card-style">
+                    <div class="metric-display">
+                        <p><span id="operatingDaysCount" class="metric-value">0</span> días de operación</p>
+                        <p><span id="avgTradesPerDay" class="metric-value">0.0</span> operaciones por día</p>
+                    </div>
+                    <canvas id="tradesPerDayChart" class="metric-chart"></canvas>
+                </div>
+
+                <div class="winrate-card chart-card-style">
+                    <div class="metric-display">
+                        <p>Win Rate: <span id="winrateDisplay" class="metric-value">0.00%</span></p>
+                        <p>Total Trades: <span id="totalTradesDisplay" class="metric-value">0</span></p>
+                    </div>
+                    <canvas id="winrateChart" class="metric-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column-trackrecord chart-card-style">
+            <h3 class="chart-title">Track Record Global</h3>
+            <canvas id="globalTrackRecordChart"></canvas>
+        </div>
+    </div>
+
+    <div class="accounts-grid">
+        <!-- Las tarjetas de cuenta se generarán dinámicamente aquí -->
+    </div>
+</section>
+
+<!-- Estilos CSS actualizados para el nuevo layout -->
+<style>
+    /* Estilos generales del contenedor principal del dashboard */
+    .portfolio-section {
+        padding: 20px;
+        background-color: #f4f7f6;
+        /* border-radius: 8px; */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        /* margin: 20px; */
+    }
+
+    /* Estilo para el título principal del Journal */
+    .dashboard-main-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-title-custom {
+        font-size: 2.2em;
+        color: #000;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    /* Contenedor principal de métricas: Usará flexbox para las dos columnas */
+    .dashboard-metrics-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        /* margin-top: 20px; */
+        width: 100%;
+        flex-direction: column;
+    }
+
+    /* Columna izquierda para Actividad Diaria y Win Rate */
+    .left-column-metrics {
+        flex: 1;
+        max-width: 100%;
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Contenedor flex para Actividad Diaria y Win Rate para que estén horizontales */
+    .top-row-metrics {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+.right-column-trackrecord {
+    flex: 2;
+    max-width: 65%;
+    min-width: 300px;
+    
+    /* CAMBIO: Usamos una altura fija para la tarjeta, y justify-content para distribuir */
+    height: 350px; /* Altura fija para la tarjeta del track record global */
+    /* max-height: 800px; */ /* Ya no es tan necesario si la altura es fija */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* CAMBIO: Distribuye el espacio entre el título y el canvas */
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+
+
+.chart-card-style {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 150px;
+    max-width: 104%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* CAMBIO: Distribuye el espacio entre métricas y canvas */
+    position: relative;
+    
+    /* CAMBIO: Altura fija para las tarjetas de winrate y trades per day */
+    height: 280px; 
+    
+    font-size: small;
+}
+
+
+    /* Título de las gráficas dentro de las tarjetas */
+    .chart-title {
+        color: #333;
+        margin-bottom: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Estilos específicos para las métricas de texto */
+    .metric-display {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+        color: #555;
+    }
+
+    .metric-value {
+        font-weight: bold;
+        color: #000;
+    }
+
+    /* Ajuste de tamaño para los canvas dentro de sus contenedores */
+    /* Esta regla ahora solo afecta a #winrateChart y #globalTrackRecordChart */
+    /* Ajuste de tamaño para los canvas dentro de sus contenedores */
+    .chart-card-style canvas {
+        width: 90% !important;
+        height: auto !important;
+        flex-grow: 1;
+        max-height: 80%;
+    }
+
+/* Ajuste específico para el canvas del Track Record Global */
+/* Ajuste específico para el canvas del Track Record Global */
+.right-column-trackrecord canvas {
+    width: 100% !important;
+    height: auto !important; /* Permite que el canvas se ajuste a su contenido */
+    flex-grow: 1; /* CAMBIO: Ocupa el espacio restante en el contenedor flex */
+    max-height: 100%; /* Asegura que no se desborde */
+}
+
+
+    /* Estilo para el contenedor de las gráficas individuales de cada cuenta */
+    .middle-content-container {
+        height: 300px;
+        width: 100%;
+        position: relative;
+    }
+
+    /* Estilo para el canvas dentro de middle-content-container */
+    .middle-content-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Media queries para responsividad */
+    @media (max-width: 1200px) {
+        .left-column-metrics,
+        .right-column-trackrecord {
+            max-width: 100%;
+            flex: none;
+        }
+        .right-column-trackrecord {
+            height: 400px;
+        }
+        .chart-card-style {
+            max-width: 48%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-metrics-container,
+        .left-column-metrics,
+        .top-row-metrics {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .chart-card-style {
+            max-width: 95%;
+            min-width: auto;
+        }
+        .right-column-trackrecord {
+            height: 350px;
+        }
+    }
+</style>

@@ -1,0 +1,90 @@
+<div class="forexfactory-container">
+    <h2>Noticias de Forex Factory (Carpeta Roja)</h2>
+    <div class="forexfactory-news-list" id="forexfactory-news-list">
+        <!-- Las noticias se cargarán aquí desde forexfactory.js -->
+        <p class="loading-message">Cargando noticias...</p>
+    </div>
+    <p class="data-source-note">Datos de ejemplo con fines educativos y de journal solamente.</p>
+</div>
+
+<style>
+    .forexfactory-container {
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 0;
+        padding: 20px;
+        box-shadow: none;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+
+    .forexfactory-container h2 {
+        color: #000;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .forexfactory-news-list {
+        margin-top: 15px;
+    }
+
+    .news-item {
+        border-bottom: 1px dashed #ccc;
+        padding: 10px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .news-item:last-child {
+        border-bottom: none;
+    }
+
+    .news-time {
+        font-weight: bold;
+        color: #333;
+        flex-shrink: 0;
+        width: 60px;
+    }
+
+    .news-currency {
+        font-weight: bold;
+        color: #007bff;
+        flex-shrink: 0;
+        width: 40px;
+        text-align: center;
+    }
+
+    .news-impact {
+        flex-shrink: 0;
+        width: 30px;
+        text-align: center;
+    }
+
+    .news-impact img {
+        width: 20px;
+        height: auto;
+    }
+
+    .news-event {
+        flex-grow: 1;
+        color: #000;
+        text-align: left; /* Asegura que el texto del evento se alinee a la izquierda */
+    }
+
+    .loading-message {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+    }
+
+    .data-source-note {
+        font-size: 0.8em;
+        color: #777;
+        text-align: center;
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+</style>

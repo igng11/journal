@@ -1,0 +1,39 @@
+<div id="content">
+    <h2>Bienvenido a tu Trading Journal</h2>
+    <p>Selecciona una opción del menú</p>
+</div>
+
+<section class="mb-6">
+    <div id="historialContainer" class="p-4 bg-white rounded shadow"></div>
+</section>
+<header class="flex items-center justify-between mb-6">
+    <button id="prev-month" class="historialContainer font-montserrat-italic regular py-6 px-8"><i class="fa fa-arrow-left"></i></button>
+    <div id="calendar-title" class="text-2xl font-bold capitalize font-montserrat-regular">Enero 2025</div>
+    <button id="next-month" class="historialContainer font-montserrat-italic regular py-6 px-8"><i class="fa fa-arrow-right"></i></button>
+</header>
+
+<div id="calendar" class="calendar-grid">
+    </div>
+<script src="calendar.js"></script>
+    <script>
+        // Capturar todos los enlaces del sidebar
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault(); // Evitar la recarga de la página
+                const pageUrl = this.getAttribute("href");
+
+                fetch(pageUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Error al cargar la página");
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.querySelector(".main-content").innerHTML = html;
+                        // Aquí podrías agregar lógica adicional si necesitas ejecutar scripts específicos de la página cargada
+                    })
+                    .catch(error => console.error("Error cargando la página:", error));
+            });
+        });
+    </script>
+</body>
+</html>

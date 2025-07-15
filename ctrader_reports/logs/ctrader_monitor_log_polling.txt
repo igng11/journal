@@ -1,0 +1,462 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705221100
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 4544
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:11:01: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:11:01: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:11:01: Los archivos se copiarán a: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705222201
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 2712
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:22:01: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:22:01: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:22:01: Los archivos se copiarán a: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705222510
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 11604
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:25:10: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:25:10: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:25:10: Los archivos se copiarán a: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705222540
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 13464
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:25:41: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:25:41: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:25:41: Los archivos se copiarán a: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705223042
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 4504
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:30:43: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:30:43: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:30:43: Los archivos se copiarán a: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250705223930
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8496
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-05 22:39:30: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-05 22:39:30: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-05 22:39:30: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250706211635
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8376
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-06 21:16:36: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-06 21:16:36: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-06 21:16:36: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250707083622
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8332
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-07 08:36:23: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-07 08:36:23: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-07 08:36:23: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250707231438
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8464
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-07 23:14:38: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-07 23:14:38: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-07 23:14:38: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250707233450
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8424
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-07 23:34:51: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-07 23:34:51: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-07 23:34:51: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250707234906
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8448
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-07 23:49:06: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-07 23:49:06: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-07 23:49:06: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250708000258
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8432
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-08 00:02:58: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-08 00:02:58: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-08 00:02:58: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250708002340
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8444
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-08 00:23:41: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-08 00:23:41: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-08 00:23:41: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250708004107
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8416
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-08 00:41:07: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-08 00:41:07: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-08 00:41:07: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250708071233
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8596
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-08 07:12:33: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-08 07:12:33: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-08 07:12:33: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250708114250
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8616
+PSVersion: 5.1.19041.5965
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.5965
+BuildVersion: 10.0.19041.5965
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-08 11:42:50: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-08 11:42:50: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-08 11:42:50: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250709194124
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 7968
+PSVersion: 5.1.19041.6093
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6093
+BuildVersion: 10.0.19041.6093
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-09 19:41:24: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-09 19:41:24: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-09 19:41:24: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250709194402
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 5800
+PSVersion: 5.1.19041.6093
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6093
+BuildVersion: 10.0.19041.6093
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-09 19:44:02: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-09 19:44:02: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-09 19:44:03: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250710101057
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8452
+PSVersion: 5.1.19041.6093
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6093
+BuildVersion: 10.0.19041.6093
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-10 10:10:58: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-10 10:10:58: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-10 10:10:58: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250711090447
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8464
+PSVersion: 5.1.19041.6093
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6093
+BuildVersion: 10.0.19041.6093
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-11 09:04:47: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-11 09:04:47: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-11 09:04:47: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20250714105615
+Nombre de usuario: IGNACIO\Usuario
+Usuario RunAs: IGNACIO\Usuario
+Nombre de la configuración: 
+Máquina: IGNACIO (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Users\Usuario\Desktop\Journal\MonitorCTRaderReports_Polling.ps1
+Id. de proceso: 8848
+PSVersion: 5.1.19041.6093
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6093
+BuildVersion: 10.0.19041.6093
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Usuario\Desktop\Journal\ctrader_reports\logs\ctrader_monitor_log_polling.txt
+2025-07-14 10:56:16: DEBUG: Script de monitoreo (polling) iniciado y transcripción activa.
+2025-07-14 10:56:16: Monitoreando la carpeta de origen: C:\Users\Usuario\Documents\cTrader\Statements\Spotware cada 10 segundos.
+2025-07-14 10:56:16: Los archivos se MOVERÁN y se LIMPIARÁN por cuenta en: C:\Users\Usuario\Desktop\Journal\ctrader_reports

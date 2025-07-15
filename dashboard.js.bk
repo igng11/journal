@@ -1,0 +1,781 @@
+// dashboard.js
+import { initMiniCalendar } from './minicalendar.js';
+
+console.log('dashboard.js cargado');
+
+const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const dayNames = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+// Variable global para la gráfica de winrate para poder actualizarla
+let winrateChartInstance = null;
+// Variable global para la gráfica de track record global
+let globalTrackRecordChartInstance = null;
+// Variable global para la gráfica de trades por día
+let tradesPerDayChartInstance = null;
+
+// Exporta initDashboard para que app.js pueda llamarla
+export function initDashboard() {
+    console.log('initDashboard() se está ejecutando desde el módulo dashboard.js');
+    fetchAccountData();
+    window.regenerateData = regenerateData; // Exponer para el onclick en dashboard.html
+}
+
+// Función principal para obtener los datos del servidor
+async function fetchAccountData() {
+    console.log('fetchAccountData() se está ejecutando para obtener datos del servidor...');
+    
+    const accountsGrid = document.querySelector('.accounts-grid');
+    // Referencias a los elementos de la sección de Actividad Diaria
+    const operatingDaysCountDisplay = document.getElementById('operatingDaysCount');
+    const avgTradesPerDayDisplay = document.getElementById('avgTradesPerDay');
+    const tradesPerDayChartCanvas = document.getElementById('tradesPerDayChart');
+
+    // CAMBIO: Referencias a los elementos de la sección de Win Rate (reintroducidas)
+    const winrateDisplay = document.getElementById('winrateDisplay');
+    const totalTradesDisplay = document.getElementById('totalTradesDisplay');
+    const winrateChartCanvas = document.getElementById('winrateChart');
+    
+    const globalTrackRecordChartCanvas = document.getElementById('globalTrackRecordChart');
+
+
+    if (accountsGrid) accountsGrid.innerHTML = '<p>Cargando datos de las cuentas...</p>';
+    
+    // Mensajes de carga para la nueva sección de Actividad Diaria
+    if (operatingDaysCountDisplay) operatingDaysCountDisplay.textContent = 'Cargando...';
+    if (avgTradesPerDayDisplay) avgTradesPerDayDisplay.textContent = 'Cargando...';
+
+    // CAMBIO: Mensajes de carga para la sección de Win Rate
+    if (winrateDisplay) winrateDisplay.textContent = 'Cargando...';
+    if (totalTradesDisplay) totalTradesDisplay.textContent = 'Cargando...';
+
+    // Mensaje de carga para la gráfica de trades por día
+    if (tradesPerDayChartCanvas) {
+        const ctx = tradesPerDayChartCanvas.getContext('2d');
+        ctx.clearRect(0, 0, tradesPerDayChartCanvas.width, tradesPerDayChartCanvas.height);
+        ctx.font = '16px Montserrat';
+        ctx.fillStyle = '#666';
+        ctx.textAlign = 'center';
+        ctx.fillText('Cargando Actividad Diaria...', tradesPerDayChartCanvas.width / 2, tradesPerDayChartCanvas.height / 2);
+    }
+
+    // CAMBIO: Mensaje de carga para la gráfica de Win Rate
+    if (winrateChartCanvas) {
+        const ctx = winrateChartCanvas.getContext('2d');
+        ctx.clearRect(0, 0, winrateChartCanvas.width, winrateChartCanvas.height);
+        ctx.font = '16px Montserrat';
+        ctx.fillStyle = '#666';
+        ctx.textAlign = 'center';
+        ctx.fillText('Cargando Win Rate...', winrateChartCanvas.width / 2, winrateChartCanvas.height / 2);
+    }
+
+    // Mensaje de carga para la gráfica de track record global
+    if (globalTrackRecordChartCanvas) {
+        const ctx = globalTrackRecordChartCanvas.getContext('2d');
+        ctx.clearRect(0, 0, globalTrackRecordChartCanvas.width, globalTrackRecordChartCanvas.height);
+        ctx.font = '16px Montserrat';
+        ctx.fillStyle = '#666';
+        ctx.textAlign = 'center';
+        ctx.fillText('Cargando Track Record...', globalTrackRecordChartCanvas.width / 2, globalTrackRecordChartCanvas.height / 2);
+    }
+
+
+    try {
+        const response = await fetch('http://localhost:3005/data');
+        if (!response.ok) {
+            throw new Error(`Error HTTP! Estado: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Datos recibidos del servidor:', data);
+        displayAccountsGrid(data);
+    } catch (error) {
+        console.error('Error al obtener los datos de las cuentas:', error);
+        if (accountsGrid) accountsGrid.innerHTML = '<div class="error-message">Error al cargar los datos. Asegúrate de que el servidor esté corriendo.</div>';
+        
+        // Manejo de error para la sección de Actividad Diaria
+        if (operatingDaysCountDisplay) operatingDaysCountDisplay.textContent = 'N/A';
+        if (avgTradesPerDayDisplay) avgTradesPerDayDisplay.textContent = 'N/A';
+        if (tradesPerDayChartInstance) {
+            tradesPerDayChartInstance.destroy();
+            tradesPerDayChartInstance = null;
+        }
+        if (tradesPerDayChartCanvas) {
+            const ctx = tradesPerDayChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, tradesPerDayChartCanvas.width, tradesPerDayChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = 'red';
+            ctx.textAlign = 'center';
+            ctx.fillText('Error al cargar.', tradesPerDayChartCanvas.width / 2, tradesPerDayChartCanvas.height / 2);
+        }
+
+        // CAMBIO: Manejo de error para la sección de Win Rate
+        if (winrateDisplay) winrateDisplay.textContent = 'N/A';
+        if (totalTradesDisplay) totalTradesDisplay.textContent = 'N/A';
+        if (winrateChartInstance) {
+            winrateChartInstance.destroy();
+            winrateChartInstance = null;
+        }
+        if (winrateChartCanvas) {
+            const ctx = winrateChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, winrateChartCanvas.width, winrateChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = 'red';
+            ctx.textAlign = 'center';
+            ctx.fillText('Error al cargar.', winrateChartCanvas.width / 2, winrateChartCanvas.height / 2);
+        }
+
+        // Destruir y limpiar la gráfica de track record global en caso de error
+        if (globalTrackRecordChartInstance) {
+            globalTrackRecordChartInstance.destroy();
+            globalTrackRecordChartInstance = null;
+        }
+        if (globalTrackRecordChartCanvas) {
+            const ctx = globalTrackRecordChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, globalTrackRecordChartCanvas.width, globalTrackRecordChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = 'red';
+            ctx.textAlign = 'center';
+            ctx.fillText('Error al cargar la gráfica.', globalTrackRecordChartCanvas.width / 2, globalTrackRecordChartCanvas.height / 2);
+        }
+    }
+}
+
+// Función para regenerar los datos en el servidor y luego volver a cargarlos
+async function regenerateData() {
+    console.log('Regenerando datos en el servidor...');
+    const accountsGrid = document.querySelector('.accounts-grid');
+    if (accountsGrid) accountsGrid.innerHTML = '<p>Regenerando datos y volviendo a cargar...</p>';
+
+    try {
+        const response = await fetch('http://localhost:3005/api/regenerate-data');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        console.log('Mensaje del servidor al regenerar:', result.message);
+        await fetchAccountData(); // Vuelve a cargar los datos frescos
+    } catch (error) {
+        console.error('Error al regenerar los datos:', error);
+        if (accountsGrid) accountsGrid.innerHTML = '<div class="error-message">Error al regenerar los datos.</div>';
+    }
+}
+
+// Función para mostrar la cuadrícula de cuentas (tu código existente con pequeñas mejoras)
+function displayAccountsGrid(data) {
+    const accountsGrid = document.querySelector('.accounts-grid');
+    if (!accountsGrid) {
+        console.error("Error: No se encontró el elemento .accounts-grid.");
+        return;
+    }
+    accountsGrid.innerHTML = ''; // Limpiar el contenido existente
+
+    // CAMBIO: Referencias a los elementos de la sección de Win Rate (reintroducidas)
+    const winrateDisplay = document.getElementById('winrateDisplay');
+    const totalTradesDisplay = document.getElementById('totalTradesDisplay');
+    const winrateChartCanvas = document.getElementById('winrateChart');
+
+    // Referencias a los nuevos elementos de la sección de Actividad Diaria
+    const operatingDaysCountDisplay = document.getElementById('operatingDaysCount');
+    const avgTradesPerDayDisplay = document.getElementById('avgTradesPerDay');
+    const tradesPerDayChartCanvas = document.getElementById('tradesPerDayChart');
+    
+    const globalTrackRecordChartCanvas = document.getElementById('globalTrackRecordChart');
+
+
+    let totalTradesGlobal = 0;
+    let winningTradesGlobal = 0;
+    // Array para almacenar todas las operaciones de todas las cuentas para la gráfica global
+    let allTrades = [];
+
+    if (data && data.mt5_accounts && Array.isArray(data.mt5_accounts) && data.mt5_accounts.length > 0) {
+        data.mt5_accounts.forEach(account => {
+            const accountPairContainer = document.createElement('div');
+            accountPairContainer.classList.add('account-pair');
+
+            const accountCard = document.createElement('div');
+            accountCard.classList.add('account-card');
+            accountCard.classList.add('clickable');
+
+                        // Obtener el balance inicial de la cuenta, si no está definido, usar 10000 como fallback
+            const initialBalance = account.initialBalance || 10000; 
+
+            const accountContent = document.createElement('div');
+            accountContent.classList.add('account-content');
+            accountContent.innerHTML = `
+                <h3 class="account-name">${account.name}</h3>
+                <p class="account-server">Servidor: ${account.server}</p>
+                <p class="account-server">Tamaño de cuenta: ${initialBalance.toFixed(0)} ${account.currency}</p>
+                <p class="account-server">Balance: ${account.balance.toFixed(2)} ${account.currency}</p>
+                <p class="account-server">Profit: <strong style="color: ${(account.balance - initialBalance) >= 0 ? 'rgb(88, 155, 137)' : 'rgb(204, 124, 102)'};"><small style="font-size: 0.7em;">U$S</small> ${(account.balance - initialBalance).toFixed(0)}</strong></p> 
+                <p class="account-server">Rendimiento: <strong class="account-balance" style="color: ${(account.balance - initialBalance) >= 0 ? 'rgb(88, 155, 137)' : 'rgb(204, 102, 102)'};">${(((account.balance - initialBalance) / initialBalance) * 100).toFixed(1)}%</strong></p>`;
+
+
+            accountCard.appendChild(accountContent);
+
+            const logoContainer = document.createElement('div');
+            logoContainer.classList.add('logo-container');
+            const platformInfo = document.createElement('div');
+            platformInfo.classList.add('platform-info');
+            const platformImgSrc = `img/${account.platform ? account.platform.toLowerCase() : 'mt5_logo'}.png`;
+            const platformAltText = `${account.platform || 'Plataforma desconocida'} logo`;
+            platformInfo.innerHTML = `<img src="${platformImgSrc}" alt="${platformAltText}" class="platform-logo">`;
+            logoContainer.appendChild(platformInfo);
+            const fundingInfo = document.createElement('div');
+            fundingInfo.classList.add('funding-info');
+            const fundingImgSrc = `img/${account.fundingCompany ? account.fundingCompany.toLowerCase() : 'wsf_logo'}.png`;
+            const fundingAltText = `${account.fundingCompany || 'Empresa desconocida'} logo`;
+            fundingInfo.innerHTML = `<img src="${fundingImgSrc}" alt="${fundingAltText}" class="funding-logo">`;
+            logoContainer.appendChild(fundingInfo);
+            accountCard.appendChild(logoContainer);
+            accountPairContainer.appendChild(accountCard);
+
+            const calendarContainer = document.createElement('div');
+            calendarContainer.classList.add('mini-calendar-container');
+            initMiniCalendar(calendarContainer, account.trades);
+            accountPairContainer.appendChild(calendarContainer);
+
+            const middleContentContainer = document.createElement('div');
+            middleContentContainer.classList.add('middle-content-container');
+
+            const chartCanvas = document.createElement('canvas');
+            chartCanvas.id = `accountChart-${account.account}`;
+            chartCanvas.width = 460;
+            chartCanvas.height = 300;
+            middleContentContainer.appendChild(chartCanvas);
+
+            accountPairContainer.appendChild(middleContentContainer);
+
+            const tradesContainer = document.createElement('div');
+            tradesContainer.classList.add('trades-container');
+            tradesContainer.style.display = 'none';
+
+            if (account.trades && account.trades.length > 0) {
+                const tradesTable = document.createElement('table');
+                tradesTable.classList.add('trades-table');
+                tradesTable.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Ticket</th>
+                            <th>Símbolo</th>
+                            <th>Tipo</th>
+                            <th>Volumen</th>
+                            <th>Apertura</th>
+                            <th>Cierre</th>
+                            <th>Ganancia</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                `;
+                const tbody = tradesTable.querySelector('tbody');
+
+                account.trades.forEach(trade => {
+                    const row = document.createElement('tr');
+                    const profitClass = trade.profit < 0 ? 'negative-profit' : 'positive-profit';
+                    const formattedProfit = trade.profit.toFixed(2);
+
+                    row.innerHTML = `
+                        <td>${trade.ticket}</td>
+                        <td>${trade.symbol}</td>
+                        <td>${trade.type}</td>
+                        <td>${trade.volume.toFixed(2)}</td>
+                        <td>${trade.open_price.toFixed(5)}</td>
+                        <td>${trade.close_price.toFixed(5)}</td>
+                        <td class="${profitClass}">${formattedProfit}</td>
+                        <td>${trade.date}</td>
+                    `;
+                    tbody.appendChild(row);
+
+                    totalTradesGlobal++;
+                    if (trade.profit >= 0) {
+                        winningTradesGlobal++;
+                    }
+                    // Añadir la operación al array global de todas las operaciones
+                    allTrades.push(trade);
+                });
+                tradesContainer.appendChild(tradesTable);
+            } else {
+                const noTradesMessage = document.createElement('p');
+                noTradesMessage.textContent = 'No hay operaciones para esta cuenta en el mes actual.';
+                noTradesMessage.classList.add('no-trades-message');
+                tradesContainer.appendChild(noTradesMessage);
+            }
+
+            accountPairContainer.appendChild(tradesContainer);
+
+            accountCard.addEventListener('click', () => {
+                tradesContainer.style.display = tradesContainer.style.display === 'none' ? 'block' : 'none';
+                accountCard.classList.toggle('expanded');
+            });
+
+            // --- LÓGICA DE CHART.JS PARA LA GRÁFICA DE LÍNEA DE CADA CUENTA ---
+            const ctx = chartCanvas.getContext('2d');
+
+            let cumulativeProfit = 0;
+            const labels = [];
+            const cumulativeProfitData = []; // CAMBIO: Un solo array para los datos
+
+            if (account.trades && account.trades.length > 0) {
+                const sortedTrades = [...account.trades].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                sortedTrades.forEach((trade, index) => {
+                    cumulativeProfit += trade.profit;
+                    labels.push(`Trade ${index + 1} (${trade.date})`);
+
+                    cumulativeProfitData.push(cumulativeProfit); // CAMBIO: Añadir al único array de datos
+                });
+            } else {
+                labels.push('No trades');
+                cumulativeProfitData.push(0); // CAMBIO: Añadir al único array de datos
+            }
+
+
+            // CAMBIO: Determinar colores basados en el rendimiento final de la cuenta
+            const lineColor = cumulativeProfit >= 0 ? 'rgba(58, 124, 74, 1)' : 'rgba(209, 90, 102, 1)' ; // CAMBIO: Texto verde oscuro / Texto rojo oscuro
+            const fillColor = cumulativeProfit >= 0 ? 'rgba(185, 250, 233, 1)' : 'rgba(252, 217, 202, 1)' ; // CAMBIO: Verde claro / Rojo claro con opacidad
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Ganancia Acumulada', // CAMBIO: Un solo label
+                            data: cumulativeProfitData, // CAMBIO: Usar el único array de datos
+                            borderColor: lineColor, // CAMBIO: Color dinámico
+                            backgroundColor: fillColor, // CAMBIO: Color de relleno dinámico
+                            fill: true, // CAMBIO CLAVE: Rellenar el área bajo la línea
+                            tension: 0.3,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false,
+                            text: 'Rendimiento Acumulado',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false,
+                            title: {
+                                display: false,
+                                text: 'Operaciones'
+                            }
+                        },
+                        y: {
+                            display: false,
+                            beginAtZero: false,
+                            title: {
+                                display: false,
+                                text: 'Ganancia/Pérdida ($)'
+                            },
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            // --- FIN LÓGICA DE CHART.JS ---
+
+            accountsGrid.appendChild(accountPairContainer);
+        }); // Fin de forEach
+
+        // CAMBIO: Cálculo y display del winrate (reintroducido)
+        let calculatedWinrate = 0;
+        if (totalTradesGlobal > 0) {
+            calculatedWinrate = (winningTradesGlobal / totalTradesGlobal) * 100;
+        }
+        if (winrateDisplay) {
+            winrateDisplay.textContent = `${calculatedWinrate.toFixed(0)}%`;
+        } else {
+            console.warn("Elemento para winrate (id 'winrateDisplay') no encontrado.");
+        }
+        if (totalTradesDisplay) {
+            totalTradesDisplay.textContent = `${totalTradesGlobal}`;
+        } else {
+            console.warn("Elemento para total de trades (id 'totalTradesDisplay') no encontrado.");
+        }
+
+        // CAMBIO: Lógica para la GRÁFICA DE WINRATE GLOBAL (reintroducida)
+        if (winrateChartCanvas) {
+            const winrateCtx = winrateChartCanvas.getContext('2d');
+            const winrateValue = parseFloat(calculatedWinrate.toFixed(0));
+            const lossrateValue = 100 - winrateValue;
+
+            // Destruye la instancia anterior si existe para evitar superposiciones
+            if (winrateChartInstance) {
+                winrateChartInstance.destroy();
+            }
+
+            winrateChartInstance = new Chart(winrateCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Win Rate', 'Loss Rate'],
+                                        datasets: [{
+                        data: [winrateValue, lossrateValue],
+                        backgroundColor: [
+                            'rgb(185, 250, 233, 0.8)', // CAMBIO: Verde claro de .traded-day con opacidad
+                            'rgb(252, 217, 202, 0.8)'  // CAMBIO: Rojo claro de .lost-day con opacidad
+                        ],
+                        borderColor: [
+                            'rgb(58, 124, 74)', // CAMBIO: Texto verde oscuro de .traded-day (borde)
+                            'rgb(209, 90, 102)'  // CAMBIO: Texto rojo oscuro de .lost-day (borde)
+                        ],
+                        borderWidth: 1,
+                        hoverBackgroundColor: [
+                            'rgb(185, 250, 233, 1)', // CAMBIO: Verde claro de .traded-day sin opacidad para hover
+                            'rgb(252, 217, 202, 1)'  // CAMBIO: Rojo claro de .lost-day sin opacidad para hover
+                        ]
+                    }]
+
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '20%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed.toFixed(0) + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        animateScale: true
+                    }
+                }
+            });
+        } else {
+            console.warn("Elemento canvas para la gráfica de winrate (id 'winrateChart') no encontrado.");
+        }
+
+        // Llama a la nueva función para calcular y mostrar la Actividad Diaria
+        calculateTradesPerDayMetricsAndChart(allTrades);
+
+
+        // Lógica para la GRÁFICA DE TRACK RECORD GLOBAL (se mantiene)
+        if (globalTrackRecordChartCanvas) {
+            const globalTrackRecordCtx = globalTrackRecordChartCanvas.getContext('2d');
+
+            // Ordenar todas las operaciones por fecha
+            const sortedAllTrades = [...allTrades].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            let cumulativeProfitGlobal = 0;
+            const globalLabels = [];
+            const globalCumulativeProfitData = []; // CAMBIO: Un solo array para los datos globales
+
+            if (sortedAllTrades.length > 0) {
+                sortedAllTrades.forEach((trade, index) => {
+                    cumulativeProfitGlobal += trade.profit;
+                    globalLabels.push(`Trade ${index + 1} (${trade.date})`);
+
+                    globalCumulativeProfitData.push(cumulativeProfitGlobal); // CAMBIO: Añadir al único array de datos globales
+                });
+            } else {
+            globalLabels.push('No trades');
+            globalCumulativeProfitData.push(0); // CAMBIO: Añadir al único array de datos globales
+            }
+
+            // Destruye la instancia anterior si existe para evitar superposiciones
+            if (globalTrackRecordChartInstance) {
+                globalTrackRecordChartInstance.destroy();
+            }
+
+            // CAMBIO: Determinar colores para la gráfica global basados en el rendimiento final
+            const globalLineColor = cumulativeProfitGlobal >= 0 ? 'rgba(58, 124, 74, 1)' : 'rgba(209, 90, 102, 1)'; // Verde o Rojo
+            const globalFillColor = cumulativeProfitGlobal >= 0 ? 'rgba(185, 250, 233, 1)' : 'rgba(252, 217, 202, 1)'; // Relleno con opacidad
+
+            globalTrackRecordChartInstance = new Chart(globalTrackRecordCtx, {
+                type: 'line',
+                data: {
+                    labels: globalLabels,
+                    datasets: [
+                        {
+                            label: 'Ganancia Acumulada Global', // CAMBIO: Un solo label
+                            data: globalCumulativeProfitData, // CAMBIO: Usar el único array de datos globales
+                            borderColor: globalLineColor, // CAMBIO: Color dinámico
+                            backgroundColor: globalFillColor, // CAMBIO: Color de relleno dinámico
+                            fill: true, // CAMBIO CLAVE: Rellenar el área bajo la línea
+                            tension: 0.3,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false, // Ocultar leyenda
+                        },
+                        title: {
+                            display: false, // Ocultar título
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += `$${context.parsed.y.toFixed(2)}`;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false, // Ocultar etiquetas del eje X para mantenerlo limpio
+                            title: {
+                                display: false,
+                                text: 'Operaciones'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            display: true, // Mostrar eje Y para ver la escala de ganancias/pérdidas
+                            beginAtZero: false,
+                            title: {
+                                display: false, // Ocultar título del eje Y
+                                text: 'Ganancia/Pérdida Acumulada ($)',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                },
+                                color: '#333'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)' // Líneas de cuadrícula suaves
+                            },
+                            ticks: {
+                                font: {
+                                    size: 10
+                                },
+                                callback: function(value) {
+                                    return `$${value.toFixed(0)}`; // Formato de moneda
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        } else {
+            console.warn("Elemento canvas para la gráfica de track record global (id 'globalTrackRecordChart') no encontrado.");
+        }
+
+    } else {
+        accountsGrid.innerHTML = '<div class="error-message">No hay información de cuentas disponible. Asegúrate de que los archivos de reporte existan y sean procesables.</div>';
+        
+        // Manejo de no datos para Actividad Diaria
+        if (operatingDaysCountDisplay) operatingDaysCountDisplay.textContent = '0';
+        if (avgTradesPerDayDisplay) avgTradesPerDayDisplay.textContent = '0.0';
+        if (tradesPerDayChartInstance) {
+            tradesPerDayChartInstance.destroy();
+            tradesPerDayChartInstance = null;
+        }
+        if (tradesPerDayChartCanvas) {
+            const ctx = tradesPerDayChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, tradesPerDayChartCanvas.width, tradesPerDayChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = '#666';
+            ctx.textAlign = 'center';
+            ctx.fillText('No hay datos de operaciones para mostrar.', tradesPerDayChartCanvas.width / 2, tradesPerDayChartCanvas.height / 2);
+        }
+
+        // CAMBIO: Manejo de no datos para Win Rate
+        if (winrateDisplay) winrateDisplay.textContent = '0%';
+        if (totalTradesDisplay) totalTradesDisplay.textContent = '0';
+        if (winrateChartInstance) {
+            winrateChartInstance.destroy();
+            winrateChartInstance = null;
+        }
+        if (winrateChartCanvas) {
+            const ctx = winrateChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, winrateChartCanvas.width, winrateChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = '#666';
+            ctx.textAlign = 'center';
+            ctx.fillText('No hay datos de operaciones para mostrar.', winrateChartCanvas.width / 2, winrateChartCanvas.height / 2);
+        }
+
+        // Limpiar la gráfica de track record global si no hay datos
+        if (globalTrackRecordChartInstance) {
+            globalTrackRecordChartInstance.destroy();
+            globalTrackRecordChartInstance = null;
+        }
+        if (globalTrackRecordChartCanvas) {
+            const ctx = globalTrackRecordChartCanvas.getContext('2d');
+            ctx.clearRect(0, 0, globalTrackRecordChartCanvas.width, globalTrackRecordChartCanvas.height);
+            ctx.font = '16px Montserrat';
+            ctx.fillStyle = '#666';
+            ctx.textAlign = 'center';
+            ctx.fillText('No hay datos de operaciones para mostrar.', globalTrackRecordChartCanvas.width / 2, globalTrackRecordChartCanvas.height / 2);
+        }
+    }
+}
+
+/**
+ * Calcula las métricas de operaciones por día y dibuja la gráfica.
+ * @param {Array} allTrades - Todas las operaciones de todas las cuentas.
+ */
+function calculateTradesPerDayMetricsAndChart(allTrades) {
+    const operatingDaysCountDisplay = document.getElementById('operatingDaysCount');
+    const avgTradesPerDayDisplay = document.getElementById('avgTradesPerDay');
+    const tradesPerDayChartCanvas = document.getElementById('tradesPerDayChart');
+
+    if (!operatingDaysCountDisplay || !avgTradesPerDayDisplay || !tradesPerDayChartCanvas) {
+        console.warn('Elementos de Actividad Diaria no encontrados. No se puede renderizar.');
+        return;
+    }
+
+    // 1. Contar operaciones por día
+    const tradesByDate = {};
+    allTrades.forEach(trade => {
+        // Asegúrate de que la fecha sea en formato YYYY-MM-DD
+        const tradeDate = trade.date.split(' ')[0]; // Asumiendo que trade.date es "YYYY-MM-DD HH:MM:SS"
+        if (tradesByDate[tradeDate]) {
+            tradesByDate[tradeDate]++;
+        } else {
+            tradesByDate[tradeDate] = 1;
+        }
+    });
+
+    // Ordenar las fechas para la gráfica
+    const sortedDates = Object.keys(tradesByDate).sort((a, b) => new Date(a) - new Date(b));
+
+    // 2. Calcular Días de Operación y Promedio de Operaciones por Día
+    const operatingDays = sortedDates.length;
+    let totalTradesOnOperatingDays = 0;
+    const tradesPerDayData = [];
+
+    sortedDates.forEach(date => {
+        totalTradesOnOperatingDays += tradesByDate[date];
+        tradesPerDayData.push(tradesByDate[date]);
+    });
+
+    const averageTradesPerOperatingDay = operatingDays > 0 ? (totalTradesOnOperatingDays / operatingDays) : 0;
+
+    // Actualizar el display en el HTML
+    operatingDaysCountDisplay.textContent = operatingDays;
+    avgTradesPerDayDisplay.textContent = averageTradesPerOperatingDay.toFixed(1);
+
+    // 3. Dibujar la gráfica de Actividad Diaria
+    if (tradesPerDayChartInstance) {
+        tradesPerDayChartInstance.destroy();
+    }
+
+    const tradesPerDayCtx = tradesPerDayChartCanvas.getContext('2d');
+    tradesPerDayChartInstance = new Chart(tradesPerDayCtx, {
+        type: 'bar', // Un gráfico de barras es ideal para esto
+        data: {
+            labels: sortedDates, // Fechas de operación
+            datasets: [{
+                label: 'Operaciones por Día',
+                data: tradesPerDayData,
+                backgroundColor: 'rgba(75, 192, 192, 0.7)', // Color de las barras
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false // Ocultar leyenda
+                },
+                title: {
+                    display: false, // Ocultar título principal (ya tenemos un h3 en el HTML)
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            return `Operaciones: ${context.parsed.y}`;
+                        },
+                        title: function(context) {
+                            return `Fecha: ${context[0].label}`; // Muestra la fecha en el título del tooltip
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: false, // Mostrar eje X para las fechas
+                    title: {
+                        display: false,
+                        text: 'Fecha'
+                    },
+                    ticks: {
+                        maxRotation: 45, // Rotar etiquetas si hay muchas fechas
+                        minRotation: 45,
+                        font: {
+                            size: 8 // Tamaño de la fuente de las etiquetas de fecha
+                        }
+                    },
+                    grid: {
+                        display: false // Ocultar líneas de cuadrícula verticales
+                    }
+                },
+                y: {
+                    display: true, // Mostrar eje Y para el conteo de operaciones
+                    beginAtZero: true,
+                    title: {
+                        display: false, // Ocultar título del eje Y
+                        text: 'Número de Operaciones'
+                    },
+                    ticks: {
+                        precision: 0, // Mostrar solo números enteros (no 1.5 operaciones)
+                        font: {
+                            size: 10
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)' // Líneas de cuadrícula suaves
+                    }
+                }
+            }
+        }
+    });
+    console.log('Gráfica de Actividad Diaria dibujada.');
+}

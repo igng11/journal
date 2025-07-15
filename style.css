@@ -1,0 +1,1369 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  /* Clases personalizadas para Montserrat */
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-montserrat-regular {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .font-montserrat-italic {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .font-montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .font-montserrat-bold-italic {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  /* Reset básico y estilos generales */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9fafb;
+    color: #1f2937;
+    display: flex;
+    min-height: 100vh;
+    overflow-y: scroll;
+  }
+  
+  .app-container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 0;
+    /* Bordes rectos */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+  
+  /* Barra lateral */
+  .sidebar {
+    background-color: #ffffff;
+    color: #9d9d9d;
+    padding: 25px 15px;
+    width: 240px;
+    flex-shrink: 0;
+    border: 1px solid #000000;
+    margin-left: 1em;
+  }
+  
+  .sidebar .logo {
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #000000;
+    font-size: 2rem;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nachofx{
+    font-size: xx-large;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    width: 100%;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 25px;
+    text-align: left;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 0;
+    /* Bordes rectos */
+    transition: background-color 0.2s ease, border 0.2s ease; /* Agregamos la transición del borde */
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sidebar nav ul li a {
+    display: flex;
+    /* Mantenemos display flex */
+    align-items: center;
+    color: #000000;  /* Cambiado color de texto por defecto */
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 12px;
+    /* Asegúrate de que el padding esté definido aquí */
+    border-radius: 10px;
+  }
+  
+  .sidebar nav ul li a span {
+    margin-left: 10px;
+  }
+  
+  .sidebar nav ul li.active,
+  .sidebar nav ul li:hover {
+      background-color: #ffffff;
+      color: #000000;
+      outline: 1px solid #000; /* Usamos outline en lugar de border */
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .sidebar nav ul li.active a,
+  .sidebar nav ul li:hover a {
+      color: #000000;
+  }
+  
+  .reload-button {
+    /* background-color: #4caf87;  */
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: solid 1px black;
+    border-radius: 1px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reload-button:hover {
+    background-color: rgb(31, 133, 79); /* Color ligeramente más oscuro al pasar el ratón */
+    color: rgb(255, 255, 255);
+}
+  .sidebar .sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+    border-top: 1px solid #4a5568;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .sidebar .sidebar-bottom a {
+    color: #000000;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 0;
+    /* Bordes rectos */
+    transition: background-color 0.2s ease, border 0.2s ease; /* Agregamos la transición del borde */
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .sidebar .sidebar-bottom a:hover {
+    background-color: #ffffff;
+    color: #010101;
+    outline: 1px solid #000; /* Usamos outline en lugar de border */
+}
+  
+  /* Contenido principal */
+  .main-content {
+    flex-grow: 1;
+    padding: 0 30px;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  /* Estilos específicos del dashboard */
+  .portfolio-section {
+    background-color: #fff;
+    border-radius: 0;
+    /* Bordes rectos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* padding: 25px; */
+    /* margin-bottom: 20px; */
+    border: 1px solid #000;
+  }
+  
+  .portfolio-balance {
+    margin-bottom: 15px;
+  }
+  
+  .balance-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .balance-amount {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111827;
+    display: block;
+  }
+  
+  .portfolio-info-box {
+    background-color: #f3f4f6;
+    /* Gris muy claro */
+    color: #1f2937;
+    /* Gris más oscuro */
+    padding: 10px 15px;
+    border-radius: 0;
+    /* Bordes rectos */
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 15px;
+    display: inline-block;
+    border: 1px solid #e5e7eb;
+    /* Añadimos un borde grisáceo */
+  }
+  
+  .market-section {
+    background-color: #fff;
+    border-radius: 0;
+    /* Bordes rectos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+  }
+  
+  .market-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .market-section .section-header h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    font-weight: 600;
+  }
+  
+  .market-table {
+    overflow-x: auto;
+  }
+  
+  .market-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .market-table th,
+  .market-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+  
+  .market-table th {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-transform: uppercase;
+  }
+  
+  .market-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .market-table td {
+    color: #374151;
+  }
+  
+  .market-table td:nth-child(4) {
+    font-weight: 500;
+  }
+  
+  .market-table .positive {
+    color: #10b981;
+  }
+  
+  .market-table .negative {
+    color: #ef4444;
+  }
+  
+  .error-message {
+    padding: 20px;
+    text-align: center;
+    color: #dc2626;
+    background-color: #fee2e2;
+    border-radius: 0;
+    /* Bordes rectos */
+  }
+  
+  /* Adaptación para el contenido cargado dinámicamente */
+  #content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0;
+    /* Bordes rectos */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+    }
+  
+    .sidebar .logo {
+      margin-bottom: 0;
+    }
+  
+    .sidebar nav ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .sidebar nav ul li {
+      margin-bottom: 0;
+      margin-left: 15px;
+    }
+  
+    .sidebar .sidebar-bottom {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    
+    .market-earn-wrapper {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+  
+  /* Reajuste de los estilos de los logos para que se posicionen correctamente dentro de .account-card */
+.platform-info {
+    position: absolute; /* Posicionamiento absoluto dentro del .account-card */
+    top: 0px; /* Ajusta la distancia desde arriba */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    font-size: 0.8em;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10; /* Asegura que esté por encima de otros elementos si hay solapamiento */
+}
+
+.platform-info .platform-logo {
+    width: 33px;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.funding-info {
+    position: absolute; /* Posicionamiento absoluto dentro del .account-card */
+    bottom: 8px; /* Ajusta la distancia desde abajo */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    font-size: 0.8em;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10; /* Asegura que esté por encima de otros elementos si hay solapamiento */
+}
+
+.funding-info .funding-logo {
+    width: 40px;
+    height: auto;
+    max-height: 24px;
+    object-fit: contain;
+}
+
+.account-content {
+    /* Mantenemos tus estilos existentes, pero nos aseguramos de que no fuerce el ancho */
+    /* flex-grow: 1; Esto podría ser útil si el contenido principal necesita crecer */
+    padding-right: 0; /* Aseguramos que no haya padding extra que interfiera */
+}
+  
+  .account-card:hover {
+    /* transform: translateX(5px); */
+    /* box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.08); */
+    /* box-shadow: 0 0 0 1px #000; Un box-shadow sutil que parece un borde negro delgado */
+    /* Opcional: si quieres un fondo ligeramente diferente al hacer hover, pero sin mover */
+    /* background-color: #f9f9f9; */
+    /* transform: scale(1.01);  Un zoom muy ligero del 1% */
+  }
+  
+
+  
+  .account-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+  
+  .account-number,
+  .account-server,
+  .account-equity,
+  .account-leverage {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 5px;
+  }
+  .account-balance{
+    font-size: 1.3rem;
+    color: #4b5563;
+    margin-bottom: 5px;
+  }
+  
+  /* Ajustar el contenedor padre si es necesario */
+  .portfolio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* padding: 30px; */
+  }
+  
+  .portfolio-card {
+    /* margin-bottom: 20px; */
+    width: fit-content;
+  }
+  
+
+/* CONSOLIDADO Y CORREGIDO: Estilos para el grid de cuentas que contiene todos los account-pair */
+.accounts-grid {
+    display: flex; /* Mantenemos Flexbox aquí para que los elementos se apilen verticalmente si hay más de una cuenta */
+    flex-direction: column; /* Los elementos hijos se organizarán en una columna */
+    gap: 20px; /* Espacio entre cada account-pair */
+    margin-top: 20px;
+    width: 100%; /* Asegura que ocupe el 100% del ancho de su padre */
+}
+
+/* CONSOLIDADO Y CORREGIDO: Estilos para el contenedor principal de cada par (tarjeta + calendario + trades) */
+.account-pair {
+    display: grid;
+    grid-template-columns: 350px 280px 1fr;
+    grid-template-rows: auto auto; /* Las filas se adaptan al contenido */
+    gap: 0px 40px;
+    padding-top: 28px;    
+    padding-right: 24px;  
+    padding-bottom: 10px; 
+    padding-left: 24px;   
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: auto; 
+    transition: height 0.3s ease-out; 
+    
+    /* AÑADIR O MODIFICAR ESTO */
+    align-items: start; /* O 'flex-start' si usas display:flex; en lugar de grid en el padre */
+                       /* Esto alinea el contenido de cada celda a la parte superior */
+                       /* Si quieres que los elementos de la primera fila se alineen al centro verticalmente, usa 'center' */
+}
+
+/* CONSOLIDADO Y CORREGIDO: Estilos para la tarjeta de cuenta */
+/* Ajustes para la tarjeta de cuenta */
+.account-card {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    grid-column: 1 / 2; /* Ocupa la primera columna del .account-pair */
+    grid-row: 1 / 2;    /* Ocupa la primera fila del .account-pair */
+    min-width: 300px;
+    
+    /* AÑADIDO: Para organizar el contenido interno del account-card (texto y logos) */
+    display: flex;
+    flex-direction: column; /* Queremos que la información de texto y los logos estén apilados en el card */
+    /* Elimina 'align-items: center;' si quieres que el texto empiece desde la izquierda */
+    /* align-items: flex-start; */ /* Alinea los items al inicio del flex-direction (columna) */
+    justify-content: flex-start; /* Alinea los items al inicio del flex-direction (columna) */
+    
+    /* AÑADIDO: Espacio para los logos posicionados absolutamente dentro del card si es necesario */
+    padding-right: 30px; /* Deja espacio a la derecha para los logos si se superponen con el texto */
+    padding-bottom: 0px; /* Deja espacio abajo para los logos si se superponen con el texto */
+}
+
+/* CONSOLIDADO Y CORREGIDO: Estilos para el contenedor del mini-calendario */
+.mini-calendar-container {
+    width: 280px; /* Mantén el ancho fijo del calendario */
+    text-align: center;
+    margin-left: 20px;
+
+    grid-column: 3 / 4; /* Ocupa la segunda columna */
+    grid-row: 1 / 2;    /* Ocupa la primera fila */
+}
+
+/* CONSOLIDADO Y CORREGIDO: Estilos para el contenedor de trades */
+.trades-container {
+    grid-column: 1 / -1; /* Ocupa todas las columnas disponibles (desde la 1 hasta la última) */
+    grid-row: 2 / 3;    /* Ocupa la segunda fila */
+
+    width: 100%; /* Asegura que la tabla ocupe el 100% del ancho asignado por el grid */
+    padding: 15px; /* Aplica padding dentro del contenedor de trades */
+    border-top: 1px solid #eee;
+    box-sizing: border-box;
+    /* max-width: 100%; ESTO NO ES NECESARIO AQUÍ GRACIAS A grid-column: 1 / -1 */
+    /* overflow-x: auto; Puedes añadir esto si la tabla es muy ancha y quieres scroll horizontal */
+}
+
+/* MUY IMPORTANTE: Asegúrate de que la regla .account-details-wrapper no exista en tu CSS. */
+/* Si la tienes, ELIMÍNALA completamente. */
+
+/* Tus estilos existentes para .account-pair, .account-card, .mini-calendar-container, etc. */
+
+/* Estilos para el contenedor del medio que contendrá la gráfica */
+.middle-content-container {
+    grid-column: 2 / 3; /* Colócalo en la tercera columna */
+    grid-row: 1 / 2;    /* En la primera fila */
+    display: flex;
+    justify-content: center; /* Centra la gráfica horizontalmente */
+    align-items: center;     /* Centra la gráfica verticalmente */
+    padding: 0px; /* Un poco de padding alrededor de la gráfica */
+    box-sizing: border-box;
+    min-width: 150px; /* Un ancho mínimo si la columna 1fr se hace muy pequeña */
+    max-width: 100%; /* Asegura que no se desborde */
+    max-height: 109px; /* Puedes limitar la altura si lo necesitas */
+    margin-left: 10px;
+}
+
+/* Si tu canvas necesita un tamaño específico dentro del flex container */
+.middle-content-container canvas {
+    max-width: 100%; /* Asegura que el canvas no se salga de su contenedor */
+    max-height: 100%; /* Asegura que el canvas no se salga de su contenedor */
+}
+
+/* Considera también el media query para móviles: */
+@media (max-width: 768px) {
+    .account-pair {
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: auto auto auto auto; /* Tarjeta, Calendario, Gráfica, Trades */
+    }
+
+    /* La gráfica debería apilarse también */
+    .middle-content-container {
+        grid-column: 1 / -1; /* Ocupa todo el ancho */
+        grid-row: 3 / 4;     /* Se coloca en la tercera fila */
+    }
+    /* ... el resto de tus media queries ... */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .account-pair {
+        /* En pantallas más pequeñas, apilamos la tarjeta y el calendario verticalmente */
+        grid-template-columns: 1fr; /* Una sola columna para todos los elementos */
+        grid-template-rows: auto auto auto; /* Una fila para la tarjeta, otra para el calendario, otra para los trades */
+        gap: 20px 0; /* Espacio vertical entre los elementos apilados */
+    }
+
+    .account-card,
+    .mini-calendar-container,
+    .trades-container {
+        grid-column: 1 / -1; /* Todos ocupan el ancho completo de la única columna */
+        width: 100%; /* Asegura que ocupen el 100% del ancho */
+    }
+
+    .mini-calendar-container {
+        margin-left: 0; /* Eliminar el margen izquierdo cuando se apilan */
+        margin-top: 0; /* Eliminar margen superior si se había añadido */
+    }
+}
+/* style.css */
+
+
+/* Cabecera del mini-calendario (contiene botones y título) */
+.mini-calendar-header {
+    display: flex; /* Esto es clave para alinear los elementos en una fila */
+    justify-content: space-between; /* Distribuye espacio entre los ítems (botones y título) */
+    align-items: center; /* Centra verticalmente los ítems */
+    margin-bottom: 10px; /* Espacio entre el encabezado y la cuadrícula de días */
+    padding: 0 5px; /* Pequeño padding a los lados */
+}
+
+/* Título del mes/año */
+.mini-calendar-title {
+    flex-grow: 1; /* Permite que el título ocupe el espacio restante */
+    text-align: center; /* Asegura que el texto del título esté centrado */
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+/* Estilos para los botones de navegación */
+.mini-prev-month,
+.mini-next-month {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em; /* Ajusta el tamaño del icono/flecha */
+    padding: 5px;
+    color: #333;
+    /* Asegúrate de que no tengan propiedades que los fuercen a una nueva línea */
+    display: inline-flex; /* Usar inline-flex para alinear bien con texto si es necesario */
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* Para ayudar con la alineación vertical */
+}
+
+.mini-prev-month:hover,
+.mini-next-month:hover {
+    color: #007bff;
+}
+
+/* Ajustes a los media queries para la alineación del calendario en móviles */
+@media (max-width: 768px) {
+    .account-pair {
+        /* En pantallas más pequeñas, apilamos la tarjeta y el calendario verticalmente */
+        grid-template-columns: 1fr; /* Una sola columna para todos los elementos */
+        grid-template-rows: auto auto auto; /* Una fila para la tarjeta, otra para el calendario, otra para los trades */
+        gap: 20px 0; /* Espacio vertical entre los elementos apilados */
+    }
+
+    .account-card,
+    .mini-calendar-container,
+    .trades-container {
+        grid-column: 1 / -1; /* Todos ocupan el ancho completo de la única columna */
+        width: 100%; /* Asegura que ocupen el 100% del ancho */
+    }
+
+    .mini-calendar-container {
+        margin-left: 0; /* Eliminar el margen izquierdo cuando se apilan */
+        margin-top: 0; /* Eliminar margen superior si se había añadido */
+    }
+    
+    /* AÑADIDO: En móviles, los logos quizás se superpongan si se dejan en absolute. 
+       Podrías considerar moverlos a un flujo normal o ajustar su posición drásticamente.
+       Por ahora, los dejamos en absolute y confiaremos en el z-index.
+    */
+}
+
+/* Cuadrícula de días */
+.mini-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 39px); /* 7 columnas de igual ancho */
+    gap: 0px; /* Espacio entre las celdas de los días */
+    font-size: 0.7em; /* Ajusta el tamaño de los números de los días */
+}
+
+/* Nombres de los días de la semana */
+.mini-calendar-day-name {
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+}
+
+/* Celdas de los días */
+.mini-calendar-day {
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+}
+
+/* Clases para resaltar días (ya las tienes, pero verifica su estilo) */
+.traded-day {
+    background-color: rgb(185, 250, 233); /* Un verde claro */
+    color: rgb(58, 124, 74); /* Texto verde oscuro */
+    font-weight: bold;
+}
+
+.lost-day {
+    background-color: #fcd9ca; /* Un rojo claro */
+    color: rgb(209, 90, 102); /* Texto rojo oscuro */
+    font-weight: bold;
+}
+
+/* Si quieres que los días con pérdidas anulen el color del traded-day, 
+   asegúrate de que esta regla esté después de .traded-day en tu CSS.
+   La especificidad y el orden son importantes.
+*/
+  
+/* Estilo para la tarjeta de cuenta clickeable */
+.account-card.clickable {
+    cursor: pointer;
+}
+
+.trades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.trades-table th,
+.trades-table td {
+    padding: 8px 12px;
+    border: 1px solid #e9ecef; /* Color de borde para celdas */
+}
+
+.trades-table th {
+    background-color: #f8f9fa; /* Fondo para encabezados */
+    font-weight: 600;
+    color: #495057;
+}
+
+.trades-table tbody tr:nth-child(even) {
+    background-color: #f6f6f6; /* Color de fondo para filas pares */
+}
+
+.trades-table tbody tr:hover {
+    background-color: #e2e6ea; /* Resaltar fila al pasar el ratón */
+}
+
+/* Estilos para los beneficios (ganancia/pérdida) */
+.positive-profit {
+    color: #28a745; /* Un verde para ganancias */
+    font-weight: bold;
+}
+
+.negative-profit {
+    color: #dc3545; /* Un rojo para pérdidas */
+    font-weight: bold;
+}
+
+.no-trades-message {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Opcional: estilo cuando la tarjeta está expandida */
+.account-card.expanded {
+    /* border-color: #3b82f6;  Por ejemplo, un borde azul cuando expandida */
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1);  Sombra suave */
+}
+
+
+/* Si necesitas ajustar el layout para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .account-pair {
+        flex-direction: column; /* Volver a apilar en pantallas pequeñas */
+    }
+
+    .mini-calendar-container {
+        width: 100%; /* Ocupar todo el ancho en pantallas pequeñas */
+        margin-left: 0; /* Eliminar el margen izquierdo en pantallas pequeñas */
+        margin-top: 10px;
+    }
+}
+
+/* Estilos para la tabla de riesgo */
+.risk-table-container {
+  margin-bottom: 20px;
+}
+
+.risk-table-container label {
+  display: block;
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 5px;
+}
+
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.risk-table th,
+.risk-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.risk-table th {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4b5563;
+  text-transform: uppercase;
+}
+
+.risk-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.risk-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.risk-table tbody tr.selected {
+  background-color: #d1fae5; /* Verde claro para la fila seleccionada */
+  font-weight: bold;
+}
+
+.risk-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Estilo general del contenedor de la calculadora para bordes rectos y fondo */
+.calculator-card {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #000; /* Borde negro recto */
+    border-radius: 0; /* Bordes rectos */
+    padding: 20px;
+    /* padding-right: 500px; */
+    box-shadow: none; /* Eliminar sombras si las hubiera */
+    margin-bottom: 20px;
+    margin-top: 30px;
+    width: 65%;
+}
+
+/* Estilo para los grupos de input y resultado */
+.input-group,
+.result-group {
+    margin-bottom: 15px;
+    display: flex; /* Para alinear label y input/span */
+    align-items: center;
+}
+
+.input-group label,
+.result-group label {
+    flex: 1; /* Permite que el label ocupe espacio */
+    margin-right: 10px;
+    font-weight: bold;
+    color: #000; /* Texto negro */
+}
+
+/* Estilo para los inputs y selects */
+#account-size,
+#stop-loss-pips {
+    flex: 2; /* Permite que el input/select ocupe más espacio */
+    padding: 8px;
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 0; /* Bordes rectos */
+    background-color: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    font-weight: bold;
+}
+
+/* Estilos para el contenedor de selección de tamaño de cuenta (los cuadros) */
+.account-size-selection {
+    display: grid; /* Usamos Grid para organizar los cuadros */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    gap: 10px; /* Espacio entre los cuadros */
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+    margin-bottom: 15px; /* Espacio debajo de la selección */
+}
+
+/* Estilo para cada cuadro de tamaño de cuenta */
+.account-size-item {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #000; /* Borde negro recto */
+    border-radius: 0; /* Bordes rectos */
+    padding: 10px;
+    text-align: center;
+    cursor: pointer; /* Indica que es clicable */
+    font-weight: bold;
+    color: #000; /* Texto negro */
+    transition: background-color 0.2s, color 0.2s; /* Transición suave para hover y selected */
+}
+
+/* Estilo cuando el cuadro está seleccionado */
+.account-size-item.selected {
+    background-color: #000; /* Fondo negro cuando está seleccionado */
+    color: #fff; /* Texto blanco cuando está seleccionado */
+    border-color: #000; /* Borde negro (opcional, ya es negro) */
+}
+
+.account-size-item:hover {
+    background-color: #f0f0f0; /* Un gris claro al pasar el ratón */
+}
+
+/* Media queries para responsividad (ajusta las columnas en pantallas pequeñas) */
+@media (max-width: 768px) {
+    .account-size-selection {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .account-size-selection {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+}
+
+/* Asegúrate de que el resto de tus estilos como .calculator-card, .input-group, etc.,
+   sigan aplicando los bordes rectos y colores blanco/negro. */
+
+#calculate-lot-size:hover {
+    background-color: #333; /* Un gris oscuro al pasar el ratón */
+}
+
+/* Estilo para los spans de resultado (Riesgo en USD y Tamaño del Lote) */
+#risk-usd,
+#lot-size {
+    flex: 2; /* Alineado con los inputs */
+    padding: 8px;
+    height: 40px;
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 0; /* Bordes rectos */
+    background-color: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Ajustes para la tabla de riesgo */
+.risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 1px solid #000;
+}
+
+.risk-table th,
+.risk-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    color: #000;
+}
+
+.risk-table thead {
+    background-color: #ffffff;
+    color: #fff;
+}
+
+/* Estilo para las celdas de lotaje para que se distingan un poco o simplemente sean texto */
+.risk-table .lot-size-output {
+    font-weight: bold;
+    background-color: #f8f8f8; /* Un fondo ligeramente diferente */
+}
+
+.risk-table tbody tr {
+    background-color: #fff;
+    /* Cursor por si aún quieres la indicación visual de selección, aunque no impacte el cálculo */
+    cursor: pointer;
+}
+
+.risk-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.risk-table tbody tr.selected {
+    background-color: #fff6a9;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Estilos para el contenedor principal de la sección Mindset */
+.mindset-container {
+    padding: 20px;
+    color: #000; /* Texto negro */
+}
+
+.mindset-container h2 {
+    color: #000; /* Título principal negro */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para las tarjetas de recordatorios y frases */
+.mindset-card {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #000; /* Borde negro recto */
+    border-radius: 0; /* Bordes rectos */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: none; /* Eliminar sombras */
+}
+
+.mindset-card h3 {
+    color: #000; /* Título de la tarjeta negro */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000; /* Subrayado negro */
+    padding-bottom: 5px;
+}
+
+/* Estilos para la lista de recordatorios */
+#study-reminders-list {
+    list-style: none; /* Sin viñetas predeterminadas */
+    padding: 0;
+    margin: 0;
+}
+
+#study-reminders-list li {
+    background-color: #ffffff; /* Fondo gris claro para los ítems */
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 0;
+    padding: 10px;
+    margin-bottom: 8px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Estilos para las frases motivacionales */
+#motivational-quotes p {
+    font-size: 1.1em;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Estilo para el botón "Siguiente Frase" - Reutiliza el estilo del botón Calcular Lotaje */
+#next-quote-button {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 0; /* Bordes rectos */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#next-quote-button:hover {
+    background-color: #333; /* Un gris oscuro al pasar el ratón */
+}
+
+
+
+
+/* Estilos para la cuadrícula de imágenes en Mente Trader */
+.mindset-image-grid {
+    display: grid;
+    /* CAMBIO AQUÍ: 2 columnas de igual tamaño */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Espacio entre los elementos de la cuadrícula */
+    margin-bottom: 20px;
+}
+
+/* Mantén el resto de los estilos del .grid-item y otros como están */
+.grid-item {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+
+.grid-item p {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+}
+
+/* Media query para hacer la cuadrícula responsive en pantallas más pequeñas */
+/* Puedes ajustar estos si lo deseas, pero con 2 columnas ya es bastante responsive */
+@media (max-width: 768px) {
+    .mindset-image-grid {
+        /* En pantallas más pequeñas, quizás una columna si quieres */
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Si quieres que siempre sean 2 columnas y que se ajusten solas, puedes eliminar la media query de 480px o ajustarla.
+   Por ahora, la dejaré como estaba, haciendo una sola columna en pantallas muy pequeñas. */
+@media (max-width: 480px) {
+    .mindset-image-grid {
+        /* En las pantallas más pequeñas, una columna */
+        grid-template-columns: 1fr;
+    }
+}
+/* Estilos para los iconos en la lista de recordatorios */
+.list-icon {
+    width: 20px; /* Tamaño del icono */
+    height: 20px; /* Asegura que sea cuadrado */
+    min-width: 20px; /* Asegura que no se haga más pequeño */
+    min-height: 20px; /* Asegura que no se haga más pequeño */
+    object-fit: contain; /* Ajusta la imagen dentro de su caja sin recortar */
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+    vertical-align: middle; /* Alinea el icono con el texto */
+    border: none; /* Eliminar borde para iconos pequeños */
+    display: inline-block; /* Importante para que width/height funcionen bien */
+}
+
+/* Ajuste para que la lista y el icono se alineen mejor */
+#study-reminders-list li {
+    display: flex; /* Usar flexbox para alinear el icono y el texto */
+    align-items: flex-start; /* Alinea los ítems desde el inicio, útil si el texto es largo */
+    /* Puedes probar 'center' si prefieres que el icono esté centrado verticalmente con la línea de texto */
+    /* align-items: center; */
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 10px;
+    margin-bottom: 8px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Estilo para los inputs y selects (asegúrate de que el select de pips lo use) */
+#account-size, /* Esto ya no es un select, se puede eliminar si no se usa en otra parte */
+#stop-loss-pips { /* Aplica estilo al nuevo select de pips */
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 0;
+    background-color: #fff;
+    color: #000;
+    -webkit-appearance: none; /* Elimina estilos por defecto en Webkit (Chrome, Safari) */
+    -moz-appearance: none; /* Elimina estilos por defecto en Firefox */
+    appearance: none; /* Elimina estilos por defecto */
+    /* Opcional: añadir un icono de flecha personalizado si se eliminan los estilos por defecto */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    padding-right: 25px; /* Para dejar espacio al icono */
+    margin-left: 190px;
+}
+
+/* Mantén todos los demás estilos que ya tienes para los inputs, labels, etc. */
+
+/* Contenedor principal del encabezado del dashboard */
+.dashboard-header-container {
+    display: flex; /* Usamos flexbox para alinear la sección del título y las acciones */
+    justify-content: space-between; /* Empuja el título a la izquierda y las acciones a la derecha */
+    align-items: flex-end; /* Alinea los elementos a la parte inferior de este contenedor */
+    padding: 20px 24px; /* Padding interno */
+    margin-bottom: 20px; /* Margen inferior para separarlo de las tarjetas de cuenta */
+    background-color: #f8f9fa; /* Un color de fondo suave */
+    border-bottom: 1px solid #eee; /* Una línea sutil para separarlo del contenido */
+    border-radius: 8px; /* Si quieres bordes redondeados */
+}
+
+/* Sección del título y winrate */
+.dashboard-title-section {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    /* align-items: flex-start;  Ya es el default para flex-direction column */
+}
+
+.dashboard-title {
+    font-size: 2.5em; /* Tamaño grande para el nombre */
+    font-weight: bold; /* Negrita */
+    color: #333;
+    margin: 0; /* Quitar márgenes por defecto del h1 */
+    line-height: 1.1; /* Ajustar el espaciado entre líneas */
+}
+
+.winrate-value {
+    font-size: 3.5em; /* Tamaño muy grande para el porcentaje */
+    font-weight: bold;
+    color: #28a745; /* Un color distintivo para el porcentaje, quizás verde para ganancias */
+    margin-top: -10px; /* Subir un poco el porcentaje para que quede cerca del título */
+    margin-bottom: 5px;
+    line-height: 1; /* Ajustar el espaciado entre líneas */
+}
+
+.winrate-label {
+    font-size: 1.1em;
+    color: #666;
+    margin: 0;
+    text-transform: uppercase; /* Opcional: para que se vea más como una etiqueta */
+    letter-spacing: 0.5px;
+}
+
+/* Sección de estadísticas y acciones (ej: botón de info adicional) */
+.dashboard-stats-actions {
+    display: flex;
+    align-items: center; /* Centra verticalmente el texto y el botón */
+    gap: 15px; /* Espacio entre el conteo de trades y el botón */
+}
+
+.total-trades-count {
+    font-size: 1em;
+    color: #555;
+    font-weight: normal;
+    margin-bottom: 105px;
+    margin-left: 0px;
+}
+
+/* .portfolio-info-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+} */
+
+.portfolio-info-button:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries para pantallas más pequeñas (opcional, pero recomendado) */
+@media (max-width: 768px) {
+    .dashboard-header-container {
+        flex-direction: column; /* Apila los elementos en columnas en pantallas pequeñas */
+        align-items: flex-start; /* Alinea todo a la izquierda */
+        padding: 15px;
+    }
+
+    .dashboard-stats-actions {
+        margin-top: 15px; /* Espacio superior para separar del título */
+        flex-direction: column; /* Apila las stats y el botón */
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .dashboard-title {
+        font-size: 2em;
+    }
+
+    .winrate-value {
+        font-size: 3em;
+    }
+}
+
+/* style.css */
+
+/* Revisa estas reglas, algunas ya las puedes tener */
+.portfolio-section {
+    /* padding: 20px; */
+    max-width: 1200px;
+    /* margin: 0 auto; */
+}
+
+/* Este es el contenedor principal del encabezado, que ahora es tu portfolio-card */
+/* Usamos la nueva clase para aplicar los estilos de Flexbox del encabezado */
+.dashboard-header-container-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinea los elementos a la parte inferior */
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Sección del título (NachoFX y Winrate) */
+.dashboard-title-section-custom {
+    display: flex;
+    flex-direction: column; /* Apila NachoFX y el Winrate */
+    margin-left: 40px;
+    margin-bottom: 56px;
+}
+
+/* Título "NachoFX" - Usamos la clase original y la nueva para el tamaño */
+.nachofx.dashboard-title-custom { /* Combina selectores para más especificidad si es necesario */
+    font-size: 2.5em; /* Tamaño grande */
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    line-height: 1.1;
+    margin-bottom: 40px;
+}
+
+/* El valor del winrate */
+.portfolio-balance .balance-amount { /* Mantiene tu selector JS */
+    font-size: 5em; /* Tamaño muy grande para el porcentaje */
+    font-weight: 700;
+    color: rgb(88, 155, 137); /* Color distintivo */
+    margin-top: -3px; /* Ajuste visual */
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+/* La etiqueta "% Winrate" */
+.section-title.winrate-label-custom { /* Combina selectores */
+    font-size: 1.1em;
+    color: #666;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Sección de conteo de trades y botón */
+.dashboard-stats-actions-custom {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el conteo y el botón */
+}
+
+/* El conteo total de trades (ya tienes esta clase, la mantenemos) */
+.portfolio-balance .total-trades-count { /* Mantiene tu selector JS */
+    font-size: 1em;
+    color: #555;
+    font-weight: 500;
+}
+
+/* El botón de información adicional */
+.portfolio-info-button-custom { /* Nueva clase para el botón */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.portfolio-info-button-custom:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.portfolio-info-button-custom:active {
+    transform: translateY(0);
+}
